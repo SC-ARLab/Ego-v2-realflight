@@ -1,0 +1,13 @@
+<launch>
+	<arg name="drone_id" value="0"/>
+	<arg name="odometry_topic" value="imu_propagate"/>
+
+	<node name="vins_estimator" pkg="vins"  type="vins_node" output="screen" args="$(find vins)/../config/fast_drone_250.yaml">
+		<remap from="~imu_propagate" to="/drone_$(arg drone_id)_$(arg odometry_topic)" />
+		
+		
+	</node>
+
+	<!-- <node name="loop_fusion" pkg="loop_fusion"  type="loop_fusion_node" args="$(find vins)/../config/fast_drone_250.yaml" output="screen"/> -->
+	
+</launch> 

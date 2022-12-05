@@ -1,0 +1,9 @@
+<launch>
+
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+
+        <remap from="/camera/depth/image_rect_raw" to = "/drone_0_camera/depth/image_rect_raw"/>
+        
+    </include>
+    
+</launch>

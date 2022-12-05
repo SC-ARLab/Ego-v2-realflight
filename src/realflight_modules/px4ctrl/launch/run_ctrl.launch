@@ -1,0 +1,14 @@
+<launch>
+	<arg name="drone_id" default="0"/>
+	<arg name="odometry_topic" value="imu_propagate"/>
+
+	<node pkg="px4ctrl" type="px4ctrl_node" name="px4ctrl" output="screen">
+		<!-- <remap from="~odom" to="/vins_estimator/imu_propagate"/> -->
+		<remap from="~odom" to="/drone_$(arg drone_id)_$(arg odometry_topic)" />
+		<remap from="~cmd" to="/drone_$(arg drone_id)_planning/pos_cmd" />
+
+        <rosparam command="load" file="$(find px4ctrl)/config/ctrl_param_fpv.yaml" />
+		
+	</node>
+ 
+</launch>
